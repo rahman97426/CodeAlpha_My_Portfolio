@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MD Abdul Rahman Raza — Portfolio</title>
+<meta name="description" content="MD Abdul Rahman Raza — Data Entry Specialist & Frontend Intern. Projects: Cyber Hacker Calculator, Image Gallery, Portfolio.">
+<style>
+  :root{
+    --bg: #071013;
+    --card: #0b1113;
+    --accent: #00ff00;
+    --muted: #9aa3a1;
+    --glass: rgba(255,255,255,0.02);
+    --max-width: 1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:Inter, system-ui, -apple-system,'Segoe UI', Roboto, 'Courier New', monospace}
+  html{scroll-behavior:smooth}
+  body{
+    min-height:100vh;
+    background:linear-gradient(180deg,#030507 0%, #071013 100%);
+    color:#e6f2ea;
+    display:flex;
+    justify-content:center;
+    padding:28px;
+  }
+  .site{width:100%;max-width:var(--max-width)}
+  header{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:16px;border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    position:sticky;top:12px;backdrop-filter: blur(4px);z-index:50;
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{
+    width:56px;height:56px;border-radius:10px;
+    background:linear-gradient(135deg,#002b00,#004d00);
+    display:flex;align-items:center;justify-content:center;
+    color:#001a00;font-weight:800;font-size:18px;
+    box-shadow:0 6px 18px rgba(0,255,0,0.06);
+  }
+  header h1{font-size:18px;color:var(--accent);letter-spacing:0.6px}
+  .toplinks{display:flex;gap:12px;align-items:center}
+  .toplinks a{color:var(--muted);text-decoration:none;font-size:14px}
+  .toplinks a:hover{color:var(--accent)}
+  main{display:grid;grid-template-columns:320px 1fr;gap:24px;margin-top:18px}
+  
+  /* card & layout */
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    padding:18px;border-radius:12px;border:1px solid rgba(0,255,0,0.04);
+  }
+  .profile{display:flex;flex-direction:column;align-items:center;gap:12px}
+  
+  /* Updated Avatar CSS for Image */
+  .avatar{
+    width:120px;height:120px;
+    border-radius:12px;
+    background:linear-gradient(180deg,#001900,#003300);
+    display:flex;align-items:center;justify-content:center;
+    font-size:36px;color:#001a00;font-weight:800;
+    box-shadow:0 8px 30px rgba(0,255,0,0.06);
+    overflow: hidden; /* Ensures image stays inside corners */
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .name{font-size:18px;color:var(--accent);font-weight:700}
+  .role{color:var(--muted);font-size:14px}
+  .section-title{color:var(--accent);margin-bottom:10px;font-weight:700}
+  .list{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  .skill{background:var(--glass);padding:8px;border-radius:8px;color:#dfffe0;font-size:14px}
+
+  /* right column */
+  .about p{color:#cfe8cf;line-height:1.55}
+  .job{padding:12px;background:linear-gradient(180deg, rgba(0,0,0,0.28), rgba(255,255,255,0.01));border-radius:8px;border:1px solid rgba(0,255,0,0.03)}
+  .job h4{color:var(--accent);margin-bottom:6px}
+  .meta{color:var(--muted);font-size:13px}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+  .project{
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+    padding:14px;border-radius:10px;border:1px solid rgba(0,255,0,0.04);transition:transform .22s,box-shadow .22s;
+  }
+  .project:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,255,0,0.06)}
+  .project h3{font-size:16px;color:var(--accent);margin-bottom:6px}
+  .project p{color:#dfffe0;font-size:14px;margin-bottom:8px;min-height:44px}
+  .btn-row{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(0,255,0,0.12);color:var(--accent);text-decoration:none;font-size:14px}
+  .btn:hover{background:var(--accent);color:#001a00;border-color:transparent;box-shadow:0 8px 30px rgba(0,255,0,0.06)}
+
+  /* footer */
+  footer{text-align:center;margin-top:20px;color:var(--muted);font-size:13px;padding-bottom:40px}
+
+  /* stone cursor (logo) */
+  .stone{position:fixed;right:24px;bottom:24px;width:72px;height:72px;border-radius:12px;background:linear-gradient(180deg,#163116,#002500);box-shadow:0 10px 30px rgba(0,255,0,0.08);display:flex;align-items:center;justify-content:center;color:#002200;font-weight:800;z-index:60;transition:transform .12s ease,box-shadow .12s;cursor:pointer}
+  .stone img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+
+  /* small screen */
+  @media(max-width:980px){main{grid-template-columns:1fr} .avatar{width:100px;height:100px}}
+  @media(max-width:520px){header{flex-direction:column;align-items:flex-start} .logo{width:48px;height:48px}}
+  /* small touch tweaks */
+  .sr-only{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+</style>
+</head>
+<body>
+  <div class="site" id="top">
+    <header>
+      <div class="brand">
+        <div class="logo">AR</div>
+        <div>
+          <h1>MD ABDUL RAHMAN RAZA</h1>
+          <div class="meta contact">Data Entry Specialist • Frontend Intern</div>
+        </div>
+      </div>
+      <nav class="toplinks" aria-label="Quick links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/rahman97426" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/arrahmanraza" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </header>
+
+    <main>
+      <aside>
+        <div class="card profile" aria-labelledby="profile-title">
+          
+          <div class="avatar">
+            <img src="zoha.jpg" alt="Profile Picture">
+          </div>
+
+          <div class="name">MD ABDUL RAHMAN RAZA</div>
+          <div class="role">Data Entry Specialist • Frontend Intern (CodeAlpha)</div>
+
+          <div style="width:100%;margin-top:12px">
+            <div class="section-title" id="about">Technical Skills</div>
+            <div class="list" role="list">
+              <div class="skill">HTML • CSS • JavaScript</div>
+              <div class="skill">Advanced Excel (Pivot, VLOOKUP, Macros, VBA)</div>
+              <div class="skill">Dashboard & Automation (VBA)</div>
+              <div class="skill">Git • GitHub • Responsive Design</div>
+            </div>
+          </div>
+
+          <div style="width:100%;margin-top:12px">
+            <div class="section-title">Education</div>
+            <div class="list">
+              <div class="skill">BCA — Indian Institute of Business Management, Patna (Pursuing)</div>
+              <div class="skill">Intermediate — BSEB, 2023 (71.26%)</div>
+              <div class="skill">Matriculation — BSEB, 2021 (75.8%)</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <section>
+        <div class="card about">
+          <div class="section-title">Career Objective</div>
+          <p>I am a dedicated and results-driven professional with over two years of experience in data management and analysis. I aim to contribute to the growth and success of your organization by leveraging my advanced skills in Excel, data entry, and document management. Eager to embrace new challenges, I am committed to enhancing my capabilities and delivering high-quality results that align with the organization’s long-term goals.</p>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Professional Summary</div>
+          <ul style="margin-top:8px;color:#dfffe0">
+            <li>Over 2 years of experience in data entry, data management, and document handling in high-pressure environments.</li>
+            <li>Expertise in managing large datasets with accuracy using advanced Excel functions (VLOOKUP, XLOOKUP, Pivot Tables, SUMIFS, COUNTIFS).</li>
+            <li>Strong organizational skills and ability to manage time-sensitive tasks efficiently.</li>
+            <li>Proficient in Microsoft Excel, Word, PowerPoint, and office operations; fluent in Hindi, English, Urdu.</li>
+          </ul>
+        </div>
+
+        <div class="card experience">
+          <div class="section-title">Professional Experience</div>
+          <div class="job">
+            <h4>Data Entry & Dashboard Automation</h4>
+            <div class="meta">Over 2 years — data entry, document scanning, large dataset management, Excel automation</div>
+            <ul style="margin-top:8px;color:#dfffe0">
+              <li>Automated reports and dashboards using Pivot Tables, VBA macros and dynamic charts.</li>
+              <li>Handled data integrity, digital records, and time-sensitive data operations.</li>
+              <li>Worked with MS Excel, Word, PowerPoint and basic database tasks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Projects</div>
+          <div class="projects-grid" id="projects">
+            <article class="project" aria-labelledby="p1">
+              <h3 id="p1">Dark Calculator</h3>
+              <p>Hacker-style responsive calculator (keyboard support, sound, matrix background). Built using HTML/CSS/JS.</p>
+              <div class="btn-row">
+                <a class="btn" href="https://github.com/rahman97426/CodeAlpha_Calculator" target="_blank" rel="noopener">View Repo</a>
+                <a class="btn" href="https://calcurahman.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p2">
+              <h3 id="p2">Image Gallery</h3>
+              <p>Responsive image gallery with lightbox, filters and smooth transitions. Good for portfolio showcase.</p>
+              <div class="btn-row">
+                <a class="btn" href="https://github.com/rahman97426/CodeAlpha_ImageGallery" target="_blank" rel="noopener">View Repo</a>
+                <a class="btn" href="https://coderimggallary.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+              </div>
+            </article>
+
+            <article class="project" aria-labelledby="p3">
+              <h3 id="p3">Personal Portfolio</h3>
+              <p>This portfolio website — responsive, clean, and deploy-ready. Built with accessibility and performance in mind.</p>
+              <div class="btn-row">
+                <a class="btn" href="https://github.com/rahman97426/Personal_My_Portfolio" target="_blank" rel="noopener">View Repo</a>
+                <a class="btn" href="https://codewithzohan.netlify.app/" target="_blank" rel="noopener">Live Demo</a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">Contact & Resume</div>
+          <div style="margin-top:8px;color:#dfffe0">
+            <p>Email: <a href="mailto:arrahman97426@gmail.com" style="color:#a8ffb8">arrahman97426@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919341844755" style="color:#a8ffb8">+91 9341844755</a></p>
+            <p>GitHub: <a href="https://github.com/rahman97426" target="_blank" style="color:#a8ffb8">github.com/rahman97426</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/arrahmanraza" target="_blank" style="color:#a8ffb8">linkedin.com/in/arrahmanraza</a></p>
+            <p style="margin-top:8px"><a class="btn" id="downloadResume" href="CV OF ABDUL RAHMAN.pdf" download>Download Resume (PDF)</a></p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      CV content imported from your uploaded file. View originals in the repo. © 2025 MD ABDUL RAHMAN RAZA
+    </footer>
+  </div>
+
+  <div class="stone" id="stone" title="AR — Click to contact">⚙️</div>
+
+<script>
+/* ------------------ Stone cursor (smooth lerp follow) ------------------ */
+const stone = document.getElementById('stone');
+let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+let stoneX = mouseX, stoneY = mouseY;
+const speed = 0.18; // lerp factor (0 < speed < 1)
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX - 40; // center offset
+  mouseY = e.clientY - 40;
+});
+window.addEventListener('touchmove', (e) => {
+  const t = e.touches[0];
+  mouseX = t.clientX - 40;
+  mouseY = t.clientY - 40;
+}, {passive:true});
+
+function animateStone(){
+  stoneX += (mouseX - stoneX) * speed;
+  stoneY += (mouseY - stoneY) * speed;
+  stone.style.transform = `translate(${stoneX}px, ${stoneY}px)`;
+  requestAnimationFrame(animateStone);
+}
+requestAnimationFrame(animateStone);
+
+/* ------------------ Small entrance animations ------------------ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.card, .project, header, footer').forEach((el, i) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(10px)';
+    setTimeout(()=>{ el.style.transition = 'opacity .5s ease, transform .5s ease'; el.style.opacity = 1; el.style.transform = 'translateY(0)'; }, 80 * i);
+  });
+});
+
+/* ------------------ Download resume handling ------------------ */
+document.getElementById('downloadResume').addEventListener('click', (e) => {
+  // if you keep the placeholder path 'assets/Abdul_Rahman_CV.pdf' ensure it exists in repo;
+});
+
+/* ------------------ Smooth keyboard support for accessibility ------------------ */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Home') window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ------------------ Optional: open email when stone clicked ------------------ */
+stone.addEventListener('click', ()=> {
+  window.location.href = 'mailto:arrahman97426@gmail.com';
+});
+</script>
+</body>
+</html>
